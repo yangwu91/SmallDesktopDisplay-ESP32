@@ -27,9 +27,9 @@
  * *****************************************************************/
 #include <ArduinoJson.h>
 #include <TimeLib.h>
-#include <ESP8266WiFi.h>
-#include <ESP8266HTTPClient.h>
-#include <ESP8266WebServer.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include <WebServer.h>
 #include <WiFiUdp.h>
 #include <TFT_eSPI.h>
 #include <SPI.h>
@@ -44,7 +44,7 @@
 #include "Animate/Animate.h"         //动画模块
 #include "wifiReFlash/wifiReFlash.h" //WIFI功能模块
 
-#define Version "SDD V1.4.3"
+#define Version "SDD for ESP32 V1.4.3"
 /* *****************************************************************
  *  配置使能位
  * *****************************************************************/
@@ -129,7 +129,7 @@ unsigned int updateweater_time = 1;
 // LCD屏幕相关设置
 TFT_eSPI tft = TFT_eSPI(); // 引脚请自行配置tft_espi库中的 User_Setup.h文件
 TFT_eSprite clk = TFT_eSprite(&tft);
-#define LCD_BL_PIN 5 // LCD背光引脚
+#define LCD_BL_PIN 16 // LCD背光引脚
 uint16_t bgColor = 0x0000;
 
 //其余状态标志位
@@ -1161,7 +1161,7 @@ void sendNTPpacket(IPAddress &address)
 
 void esp_reset(Button2 &btn)
 {
-  ESP.reset();
+  ESP.restart();
 }
 
 void wifi_reset(Button2 &btn)
@@ -1208,7 +1208,7 @@ void WIFI_reflash_All()
       getNtpTime();
       //其他需要联网的方法写在后面
 
-      WiFi.forceSleepBegin(); // Wifi Off
+      WiFi.disconnect(); // Wifi Off
       Serial.println("WIFI sleep......");
       Wifi_en = 0;
     }
@@ -1223,7 +1223,7 @@ void WIFI_reflash_All()
 void openWifi()
 {
   Serial.println("WIFI reset......");
-  WiFi.forceSleepWake(); // wifi on
+  WiFi.reconnect(); // wifi on
   Wifi_en = 1;
 }
 
@@ -1356,7 +1356,7 @@ void setup()
     IndoorTem();
 #endif
 
-  WiFi.forceSleepBegin(); // wifi off
+  WiFi.disconnect(); // wifi off
   Serial.println("WIFI休眠......");
   Wifi_en = 0;
 

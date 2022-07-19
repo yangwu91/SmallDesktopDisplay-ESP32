@@ -4,3 +4,8 @@
 .vscode/launch.json
 .vscode/ipch
 .test/
+*.o
+*.a
+*.d
+*.swp
+.DS_Store

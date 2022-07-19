@@ -1,0 +1,10 @@
+ivanseidel/Thread@0.0.0-alpha+sha.1a4e504c5f
+lennarthennigs/Button2@^2.0.3
+adafruit/Adafruit Unified Sensor@^1.1.5
+https://github.com/Bodmer/TJpg_Decoder.git
+fastled/FastLED@^3.5.0
+adafruit/DHT sensor library@^1.4.4
+bblanchon/ArduinoJson@^6.19.4
+bodmer/TFT_eSPI@^2.4.71
+paulstoffregen/Time@^1.6.1
+https://github.com/tzapu/WiFiManager.git
