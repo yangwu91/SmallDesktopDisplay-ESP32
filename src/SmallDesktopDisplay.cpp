@@ -11,15 +11,19 @@
  * 最后更改日期：2022.1.17
  *
  *
- * 引 脚 分 配：SCK   GPIO14
- *              MOSI  GPIO13
- *              RES   GPIO2
- *              DC    GPIO0
- *              LCDBL GPIO5
+ * 引 脚 分 配：
+ *     SCK/SCL   GPIO18
+ *     MOSI/SDA  GPIO23
+ *     RES       GPIO4
+ *     DC        GPIO2
+ *     CS        GPIO15
+ *     BL        GPIO16
  *
- *             增加DHT11温湿度传感器，传感器接口为 GPIO 12
+ *     增加DHT11温湿度传感器，传感器接口为 GPIO 19
  *
  *    感谢群友 @你别失望  提醒发现WiFi保存后无法重置的问题，目前已解决。详情查看更改说明！
+ * 
+ * Modiedied for ESP32 by Yang Wu on 20 July, 2022
  * *****************************************************************/
 
 /* *****************************************************************
@@ -58,7 +62,7 @@ WiFiManager wm; // global wm instance
 
 #if DHT_EN
 #include "DHT.h"
-#define DHTPIN 12
+#define DHTPIN 19
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
 #endif
@@ -133,8 +137,8 @@ TFT_eSprite clk = TFT_eSprite(&tft);
 uint16_t bgColor = 0x0000;
 
 //其余状态标志位
-int LCD_Rotation = 0;        // LCD屏幕方向
-int LCD_BL_PWM = 50;         //屏幕亮度0-100，默认50
+int LCD_Rotation = 1;        // LCD屏幕方向
+int LCD_BL_PWM = 10;         //屏幕亮度0-100，默认50
 uint8_t Wifi_en = 1;         // WIFI模块启动  1：打开    0：关闭
 uint8_t UpdateWeater_en = 0; //更新时间标志位
 int prevTime = 0;            //滚动显示更新标志位
@@ -154,14 +158,14 @@ int Amimate_reflash_Time = 0; //更新时间记录
 WeatherNum wrat;
 
 uint32_t targetTime = 0;
-String cityCode = "101090609"; //天气城市代码
+String cityCode = "101280101"; //天气城市代码
 int tempnum = 0;               //温度百分比
 int huminum = 0;               //湿度百分比
 int tempcol = 0xffff;          //温度显示颜色
 int humicol = 0xffff;          //湿度显示颜色
 
 // NTP服务器参数
-static const char ntpServerName[] = "ntp6.aliyun.com";
+static const char ntpServerName[] = "ntp1.aliyun.com";
 const int timeZone = 8; //东八区
 
 // wifi连接UDP设置参数
