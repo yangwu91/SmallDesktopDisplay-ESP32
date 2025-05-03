@@ -47,7 +47,7 @@
 #include "weatherNum/weatherNum.h"   //天气图库
 #include "Animate/Animate.h"         //动画模块
 
-#define Version "SDD ESP32 V1.4.4 by Wu"
+#define Version "SDD ESP32 V1.4.5 by Wu"
 /* *****************************************************************
  *  配置使能位
  * *****************************************************************/
@@ -835,7 +835,7 @@ String scrollText[7];
 void weatherData(String *cityDZ, String *dataSK, String *dataFC)
 {
   // 解析第一段JSON
-  StaticJsonDocument<1024> doc;
+  JsonDocument doc;
   deserializeJson(doc, *dataSK);
   JsonObject sk = doc.as<JsonObject>();
 
