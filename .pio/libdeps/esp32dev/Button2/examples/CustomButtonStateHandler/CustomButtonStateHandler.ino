@@ -6,7 +6,7 @@ Button2 button;
 
 /////////////////////////////////////////////////////////////////
 
-byte myButtonStateHandler() {
+uint8_t myButtonStateHandler() {
   return digitalRead(39);
 }
 
@@ -19,10 +19,10 @@ void myTapHandler(Button2 &b) {
 /////////////////////////////////////////////////////////////////
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   delay(100);
   Serial.println("\n\nCustom Buttom Test");
-  button.begin(VIRTUAL_PIN);
+  button.begin(BTN_VIRTUAL_PIN);
 
   pinMode(39, INPUT_PULLUP);
 

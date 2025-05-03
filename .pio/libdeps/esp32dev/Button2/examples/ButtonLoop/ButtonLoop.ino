@@ -13,7 +13,7 @@ Button2 button;
 /////////////////////////////////////////////////////////////////
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   delay(50);
   Serial.println("\n\nButton Loop Demo");
 
@@ -27,6 +27,7 @@ void loop() {
 
   
   Serial.println(button.clickToString(button.wait()));
+  Serial.println(button.getNumberOfClicks());
 
 /* 
  *  or replace the above line with (keep the loop):

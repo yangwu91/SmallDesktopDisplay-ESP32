@@ -9,3 +9,4 @@
 *.d
 *.swp
 .DS_Store
+(.pio-TFT_eSPI)User_Setup.h

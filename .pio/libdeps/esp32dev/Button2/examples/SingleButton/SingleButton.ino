@@ -4,44 +4,11 @@
 
 /////////////////////////////////////////////////////////////////
 
-#define BUTTON_PIN  2
+#define BUTTON_PIN  37
 
 /////////////////////////////////////////////////////////////////
 
 Button2 button;
-
-/////////////////////////////////////////////////////////////////
-
-void setup() {
-  Serial.begin(9600);
-  delay(50);
-  Serial.println("\n\nButton Demo");
-
-  button.begin(BUTTON_PIN);
-  // button.setLongClickTime(1000);
-  // button.setDoubleClickTime(400);
-
-  Serial.println(" Longpress Time: " + String(button.getLongClickTime()) + "ms");
-  Serial.println(" DoubleClick Time: " + String(button.getDoubleClickTime()) + "ms");
-
-  // button.setChangedHandler(changed);
-  // button.setPressedHandler(pressed);
-  button.setReleasedHandler(released);
-
-  // button.setTapHandler(tap);
-  button.setClickHandler(click);
-  button.setLongClickDetectedHandler(longClickDetected);
-  button.setLongClickHandler(longClick);
-  
-  button.setDoubleClickHandler(doubleClick);
-  button.setTripleClickHandler(tripleClick);
-}
-
-/////////////////////////////////////////////////////////////////
-
-void loop() {
-  button.loop();
-}
 
 /////////////////////////////////////////////////////////////////
 
@@ -59,7 +26,7 @@ void click(Button2& btn) {
     Serial.println("click\n");
 }
 void longClickDetected(Button2& btn) {
-    Serial.println("long click detected\n");
+    Serial.println("long click detected");
 }
 void longClick(Button2& btn) {
     Serial.println("long click\n");
@@ -69,9 +36,45 @@ void doubleClick(Button2& btn) {
 }
 void tripleClick(Button2& btn) {
     Serial.println("triple click\n");
+    Serial.println(btn.getNumberOfClicks());
 }
 void tap(Button2& btn) {
     Serial.println("tap");
+}
+
+/////////////////////////////////////////////////////////////////
+
+void setup() {
+  Serial.begin(115200);
+  delay(50);
+  Serial.println("\n\nButton Demo");
+
+  button.begin(BUTTON_PIN);
+  // button.setLongClickTime(1000);
+  // button.setDoubleClickTime(400);
+
+  Serial.println(" Longpress Time:\t" + String(button.getLongClickTime()) + "ms");
+  Serial.println(" DoubleClick Time:\t" + String(button.getDoubleClickTime()) + "ms");
+  Serial.println();
+
+  // button.setChangedHandler(changed);
+  // button.setPressedHandler(pressed);
+  button.setReleasedHandler(released);
+
+  // button.setTapHandler(tap);
+  button.setClickHandler(click);
+  button.setLongClickDetectedHandler(longClickDetected);
+  button.setLongClickHandler(longClick);
+  button.setLongClickDetectedRetriggerable(false);
+  
+  button.setDoubleClickHandler(doubleClick);
+  button.setTripleClickHandler(tripleClick);
+}
+
+/////////////////////////////////////////////////////////////////
+
+void loop() {
+  button.loop();
 }
 
 /////////////////////////////////////////////////////////////////

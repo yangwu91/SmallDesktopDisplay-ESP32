@@ -1,10 +1,9 @@
-bodmer/TFT_eSPI@^2.4.71
-adafruit/DHT sensor library@^1.4.4
-adafruit/Adafruit Unified Sensor@^1.1.5
 https://github.com/ivanseidel/ArduinoThread.git#1a4e504
-bblanchon/ArduinoJson@^6.19.4
-https://github.com/Bodmer/TJpg_Decoder.git#7b0d118
-https://github.com/tzapu/WiFiManager.git#7d498ed
-fastled/FastLED@^3.5.0
+bodmer/TFT_eSPI@^2.5.43
 paulstoffregen/Time@^1.6.1
-lennarthennigs/Button2@^2.0.3
+lennarthennigs/Button2@^2.3.5
+Bodmer/TJpg_Decoder@^1.1.0
+bblanchon/ArduinoJson@^7.4.1
+adafruit/Adafruit Unified Sensor@^1.1.15
+tzapu/WiFiManager@^2.0.17
+adafruit/DHT sensor library@^1.4.6
