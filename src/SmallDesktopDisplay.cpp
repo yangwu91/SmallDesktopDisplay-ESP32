@@ -62,6 +62,7 @@ WiFiManager wm; // global wm instance
 #if DHT_EN
 #include "DHT.h"
 #define DHTPIN 19
+#define DHT_POWER_PIN 21 // 新增：定义DHT11电源引脚
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
 #endif

@@ -10,3 +10,4 @@
 *.swp
 .DS_Store
 (.pio-TFT_eSPI)User_Setup.h
+.pio/libdeps/esp32dev/*src-*/
